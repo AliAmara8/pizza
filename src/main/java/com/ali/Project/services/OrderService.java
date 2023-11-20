@@ -1,18 +1,19 @@
 package com.ali.Project.services;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
 
 import com.ali.Project.models.Order;
 import com.ali.Project.models.User;
 import com.ali.Project.repositories.OrderRepository;
-
-import jakarta.validation.Valid;
 
 @Service
 public class OrderService {
@@ -108,8 +109,7 @@ public class OrderService {
 	      crustPrice.put("Stuffed Crust", 1.9);
 	      return crustPrice;
 	   }
-	 
-	
+
 	 public Map<String, String> getToppingList() {
 	      Map<String, String> toppingList = new HashMap<String, String>();
 	      toppingList.put("Mushroom", "Mushroom");
@@ -120,7 +120,10 @@ public class OrderService {
 	      toppingList.put("Fresh garlic ", "Fresh garlic ");
 	     
 	      return toppingList;
+	      
 	   }
+	 
+	  
 	 
 	 public Map<String, Double> getToppingPrice() {
 	      Map<String, Double> toppingPrice = new HashMap<String, Double>();
@@ -133,6 +136,12 @@ public class OrderService {
 	     
 	      return toppingPrice;
 	   }
+	 
+	 public String getRandomKey(Map<String, String> map) {
+	        Object[] keys = map.keySet().toArray();
+	        Random random = new Random();
+	        return (String) keys[random.nextInt(keys.length)];
+	    }
 	
 
 	

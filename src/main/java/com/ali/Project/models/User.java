@@ -1,9 +1,13 @@
 package com.ali.Project.models;
 
+
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,6 +25,8 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="users")
+@DynamicInsert
+@DynamicUpdate
 public class User {
 	
 	@Id
@@ -53,6 +59,7 @@ public class User {
     @Email(message="Please enter a valid email!")
     private String email;
     
+  
     @NotEmpty(message="Password is required!")
     @Size(min=8, max=128, message="Password must be between 8 and 128 characters")
     private String password;
@@ -77,6 +84,8 @@ public class User {
         this.updatedAt = new Date();
     }
 	public User() {}
+	
+	
 	
 	
 	

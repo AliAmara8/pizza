@@ -14,7 +14,9 @@ import com.ali.Project.models.LoginUser;
 import com.ali.Project.models.User;
 import com.ali.Project.repositories.UserRepository;
 
+
 @Service
+
 public class UserService {
 	
 	@Autowired
@@ -61,10 +63,21 @@ public class UserService {
 	public List<User> allUsers(){
 		return useRepo.findAll();
 	}
-	
-	public User updateUser(User user) {
-		return useRepo.save(user);
+	public void updateUser(User user) {
+		 useRepo.save(user);
 	}
+	
+	  public User updatePartUser(Long id,String firstName,String lastName,String
+	  city,String address,String states) { 
+		  User user=useRepo.findByIdIs(id);
+	  user.setFirstName(firstName);
+	  user.setLastName(lastName);
+	  user.setCity(city);
+	  user.setAddress(address);
+	  user.setStates(states);
+	  
+	 return useRepo.save(user); }
+	 
 	
     	public User findByEmail(String email) {
     		
@@ -93,5 +106,7 @@ public class UserService {
    	      statesList.put("Nabeul", "Nabeul");
    	      return statesList;
    	   }
+
+	
 
 }

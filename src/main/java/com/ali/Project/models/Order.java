@@ -38,6 +38,8 @@ public class Order {
 	
 
 	   private List<String> topping;
+	   
+	   private boolean fav; 
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
@@ -121,6 +123,14 @@ public class Order {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public boolean isFav() {
+		return fav;
+	}
+
+	public void setFav(boolean fav) {
+		this.fav = fav;
 	}
 	
 	

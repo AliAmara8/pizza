@@ -18,7 +18,7 @@
 			<h1 class="brand">PIZZA PETE'S</h1>
 
 			<ul class="links">
-				<li><a href="/dashboard">Home</a></li>
+			<li><a href="/dashboard">Home</a></li>
 				<li><a href="/order/addOrder">Order(0)</a></li>
 				<li><a href="/account">Account</a></li>
 				<li><a href="/logout">Log out</a></li>
@@ -42,8 +42,7 @@
 						<tr>
 							<td class="float-left"><form:label path="methode">Method</form:label></td>
 							<td class="float-left"><form:select path="methode">
-									<form:errors path="methode" class="text-danger" />
-									<form:option value="NONE" label="Select" />
+									<form:option value="${randomMethod}" label="${randomMethod}" />
 									<form:options items="${getMethodList}" />
 								</form:select></td>
 						</tr>
@@ -51,14 +50,14 @@
 						<tr>
 							<td class="float-left"><form:label path="size">Size</form:label></td>
 							<td class="float-left"><form:select path="size">
-									<form:option value="NONE" label="Select" />
+									<form:option value="${randomSize}" label="${randomSize}" />
 									<form:options items="${getSizeList}" />
 								</form:select></td>
 						</tr>
 						<tr>
 							<td class="float-left"><form:label path="crust">Crust</form:label></td>
 							<td class="float-left"><form:select path="crust">
-									<form:option value="NONE" label="Select" />
+									<form:option value="${randomCrust}" label="${randomCrust}" />
 									<form:options items="${getCrustList}" />
 								</form:select></td>
 						</tr>
@@ -71,14 +70,11 @@
 						</tr>
 						
 						<tr>
-
-					
 								<td class="float-left"><form:label path="topping">Toppings</form:label></td>
-								<td ><form:checkboxes
-										items="${getToppingList}" path="topping"  /></td>
-										
-			
+								<td ><form:checkboxes items="${getToppingList}" path="topping" var="topp"
+            checked="${topp eq randomTopping}" /></td>
 						</tr>
+						
 						<div class="form-row">
 							<form:errors path="userord" class="error" />
 							<form:input type="hidden" path="userord" value="${user.id}"
